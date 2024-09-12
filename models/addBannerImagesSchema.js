@@ -1,13 +1,12 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const addBannerImagesSchema = new mongoose.Schema({
-    type:String,
-    imageUrl:String,
-    datecreated:Date,
-    dateUpdated:Date,
-    
-})
+  type: String,
+  imageUrl: String,
+  datecreated: Date,
+  dateUpdated: Date,
+});
 
-const addbannerImages = new mongoose.model('bannerimages',addBannerImagesSchema);
+const bannerimages =  mongoose.model("bannerimages", addBannerImagesSchema);
 
-module.exports = addbannerImages;
+module.exports = bannerimages;

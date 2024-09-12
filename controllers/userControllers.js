@@ -1,7 +1,7 @@
 const items = require("../models/userSchema");
 const getItemTypes = require("../models/getTypesSchema");
 const orders = require("../models/ordersSchema");
-const addbannerImages = require("../models/addBannerImagesSchema");
+const bannerimages = require("../models/addBannerImagesSchema");
 
 exports.itemsupload = async (req, res) => {
   try {
@@ -207,13 +207,14 @@ exports.updateOrderStatus = async (req, res) => {
 exports.addBannerImages = async (req, res) => {
   try {
     const { imageUrl, type } = req.body;
+    console.log(req.body);
     if (!imageUrl) {
       return res
         .status(200)
         .json({ statusCode: 500, message: "Enter Image Url" });
     }
     const datecreated = new Date();
-    const bannerImage = new addbannerImages({
+    const bannerImage = new bannerimages({
       imageUrl,
       type,
       datecreated,
@@ -235,7 +236,8 @@ exports.addBannerImages = async (req, res) => {
 exports.getBannerImages = async (req, res) => {
   try {
     try {
-      const allImages = await addBannerImages.find({});
+      const allImages = await bannerimages.find({});
+      console.log(allImages)
 
       res.status(200).json({
         statusCode: 200,
